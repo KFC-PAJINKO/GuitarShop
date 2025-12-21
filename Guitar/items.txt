@@ -1,0 +1,11 @@
+create database guitarshop;
+use guitarshop;
+create table guitaritems
+(
+    gnumber varchar(255) primary key,
+    gpic mediumblob,
+    gname varchar(50),
+    gprice decimal(10,2),
+    gbrand varchar(50)
+);
+
