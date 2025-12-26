@@ -162,7 +162,7 @@ html,body
     .middle
     {
         flex-direction: column;
-        width: 90%;
+        width: 95%;
         height: auto;
     }
     .items
