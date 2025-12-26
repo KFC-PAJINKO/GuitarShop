@@ -161,14 +161,16 @@ html,body
     }
     .middle
     {
+        flex-direction: column;
         width: 90%;
         height: auto;
     }
     .items
     {
+        flex-direction: column;
         width: 100%;
         flex-direction: column;
         align-items: center;
     }
-    
+
 }
