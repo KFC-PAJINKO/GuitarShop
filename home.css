@@ -188,7 +188,9 @@ html,body
 
     .card
     {
-        max-width: 500px;
+        max-width: 475px;
+        padding-left: 2%;
+        padding-right: 2%;
     }
 
     .card p
