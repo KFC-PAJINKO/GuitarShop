@@ -113,8 +113,8 @@
                                 if($result = $mysql->query($q))
                                 {
                                     while($row = $result->fetch_array())
-                                    {
-                                        echo '<a href="itemsinfo.php?id='.$row['gid'].'">';
+                                    {                        
+                                        echo '<a type="submit" href="itemsinfo.php?gid='.$row['gnumber'].'">';
                                         echo '<div class="card">';
                                         echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gpic']).'" alt="Guitar Image">';
                                         echo '<b><h4>'.$row['gname'].'</h4></b>';
@@ -135,7 +135,7 @@
                                 {
                                     while($row = $result->fetch_array())
                                     {
-                                        echo '<a href = "itemsinfo.php?id='.$row['gid'].'">';
+                                        echo '<a href = "itemsinfo.php?gid='.$row['gnumber'].'">';
                                         echo '<div class="card">';
                                         echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gpic']).'" alt="Guitar Image">';
                                         echo '<b><h4>'.$row['gname'].'</h4></b>';
@@ -155,7 +155,7 @@
                                 {
                                     while($row = $result->fetch_array())
                                     {
-                                        echo '<a href = "itemsinfo.php?id='.$row['gid'].'">';
+                                        echo '<a href = "itemsinfo.php?gid='.$row['gnumber'].'">';
                                         echo '<div class="card">';
                                         echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gpic']).'" alt="Guitar Image">';
                                         echo '<b><h4>'.$row['gname'].'</h4></b>';
