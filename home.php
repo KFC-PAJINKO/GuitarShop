@@ -17,8 +17,8 @@
                 <p style="margin-left: 5px;">Register</p>
             </div>
             <div class="topdown">
-                <h1 style="margin-top: 25px;">Windows Music</h1>
-                <input type="text" placeholder="Search for products..." style="width: 60%;height: 40%;margin-top: 25px;margin-right: 30px;">
+                <h1 style="margin-top: 25px; white-space: nowrap;">Windows Music</h1>
+                <input type="text" placeholder="Search for products..." style="width: 60%;height: 40%;margin-top: 25px;margin-right: 30px; margin-left: 3%;">
                 <img src="cart.png" alt="Cart Icon" style="width: 20px;height: 20px;margin-top: 35px;margin-right: 15%;">
             </div>
         </section>
@@ -39,7 +39,7 @@
                                 Often, this is done through <br>
                                 the use of effects such as reverb, distortion and "overdrive"; the latter is considered to be a key <br>
                                 element of electric blues guitar music and jazz, rock and heavy metal guitar playing. Designs also exist <br>
-                                combining attributes of electric and acoustic guitars: the semi-acoustic and acoustic-electric guitarsss.
+                                combining attributes of electric and acoustic guitars: the semi-acoustic and acoustic-electric guitars.
                             </p>
                         </div>
                     </div>
@@ -101,7 +101,7 @@
                                 </div>                               
                             </div>
                         </form>
-                    </div>
+                    </div>                    
                     <div class="itemslist">                        
                         <?php
                             session_start();
@@ -114,11 +114,13 @@
                                 {
                                     while($row = $result->fetch_array())
                                     {
+                                        echo '<a href="itemsinfo.php">';
                                         echo '<div class="card">';
                                         echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gpic']).'" alt="Guitar Image">';
                                         echo '<b><h4>'.$row['gname'].'</h4></b>';
-                                        echo '<p">'.$row['gprice'].' bath </p>';
+                                        echo '<p>'.$row['gprice'].' bath </p>';
                                         echo '</div>';
+                                        echo '</a>';
                                     }
                                 }
                                 else
@@ -164,7 +166,7 @@
                                 }
                             }
                         ?>
-                    </div>                    
+                    </div>                
                 </div>
             </div>
         </section>
