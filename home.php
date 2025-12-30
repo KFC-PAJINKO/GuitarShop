@@ -114,7 +114,7 @@
                                 {
                                     while($row = $result->fetch_array())
                                     {
-                                        echo '<a href="itemsinfo.php">';
+                                        echo '<a href="itemsinfo.php?id='.$row['gid'].'">';
                                         echo '<div class="card">';
                                         echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gpic']).'" alt="Guitar Image">';
                                         echo '<b><h4>'.$row['gname'].'</h4></b>';
@@ -135,11 +135,13 @@
                                 {
                                     while($row = $result->fetch_array())
                                     {
+                                        echo '<a href = "itemsinfo.php?id='.$row['gid'].'">';
                                         echo '<div class="card">';
                                         echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gpic']).'" alt="Guitar Image">';
                                         echo '<b><h4>'.$row['gname'].'</h4></b>';
                                         echo '<p">'.$row['gprice'].' bath </p>';
                                         echo '</div>';
+                                        echo '</a>';
                                     }
                                 }
                                 else
@@ -153,11 +155,13 @@
                                 {
                                     while($row = $result->fetch_array())
                                     {
+                                        echo '<a href = "itemsinfo.php?id='.$row['gid'].'">';
                                         echo '<div class="card">';
                                         echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gpic']).'" alt="Guitar Image">';
                                         echo '<b><h4>'.$row['gname'].'</h4></b>';
                                         echo '<p">'.$row['gprice'].' bath </p>';
                                         echo '</div>';
+                                        echo '</a>';
                                     }
                                 }
                                 else
