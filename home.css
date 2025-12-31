@@ -142,6 +142,29 @@ a
     max-width: 240.5px;
 }
 
+a:hover
+{
+    animation: mymove 1s infinite, mymovebackg 1s infinite;
+    z-index: 10;
+    
+}
+
+@keyframes mymove 
+{
+    0% {color:red;}
+    25% {color:rgb(255, 157, 0);}
+    50% {color: rgb(255, 111, 0);}
+    100% {color:purple;}
+}
+
+@keyframes mymovebackg
+{
+    0% {box-shadow: 0px 0px 10px 5px red;}
+    25% {box-shadow: 0px 0px 10px 5px rgb(255, 157, 0);}
+    50% {box-shadow: 0px 0px 10px 5px rgb(255, 111, 0);}
+    100% {box-shadow: 0px 0px 10px 5px purple;}
+}
+
 .card
 {
     display: flex;
