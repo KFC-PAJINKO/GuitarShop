@@ -131,6 +131,7 @@ html,body
     width: 100%;
     max-width: 740px;
     height: auto;
+    margin-bottom: 3%;
 }
 
 a 
@@ -210,9 +211,7 @@ a:hover
     .itemslist
     {
         flex-direction: column;
-        width: 100%;
-        max-width: 700px;
-        flex-direction: column;
+        width: 750px;
         align-items: center;
     }
 
@@ -247,5 +246,12 @@ a:hover
     .sortprice
     {
         margin-bottom: 4%;
+    }
+
+    a 
+    {
+        display: block;
+        width: 100%;
+        max-width: 350px;
     }
 }

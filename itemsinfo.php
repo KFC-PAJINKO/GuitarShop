@@ -32,14 +32,13 @@
                 ?>
             </div>
             <div class="right">
-
+                <?php
+                    session_start();
+                    $gnumber = $_SESSION['gnumber'];
+                    require('connect.php');
+                    echo "Guitar ID: " . $gnumber;
+                ?>
             </div>
-        </section>
-        <?php
-            session_start();
-            $gnumber = $_SESSION['gnumber'];
-            require('connect.php');
-            echo "Guitar ID: " . $gnumber;
-        ?>
+        </section>       
     </body>
 </html>

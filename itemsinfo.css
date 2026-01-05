@@ -43,3 +43,20 @@ html,body
     padding-left: 8%;
     height: 90px;
 }
+
+.middle
+{
+    display: flex;
+    flex-direction: row;
+    margin: 1%;
+}
+
+.left
+{
+    background-color: red;
+}
+
+.right
+{
+    background-color: blue;
+}
