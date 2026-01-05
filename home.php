@@ -114,7 +114,14 @@
                                 {
                                     while($row = $result->fetch_array())
                                     {                        
-                                        echo '<a type="submit" href="itemsinfo.php?gid='.$row['gnumber'].'">';
+                                        echo '<a href = "itemsinfo.php?gid='.$row['gnumber'].'">';
+
+                                        $_SESSION['gnumber'] = $row['gnumber'];
+                                        $_SESSION['gpic'] = $row['gpic'];
+                                        $_SESSION['gname'] = $row['gname'];
+                                        $_SESSION['gprice'] = $row['gprice'];
+                                        $_SESSION['gbrand'] = $row['gbrand'];
+
                                         echo '<div class="card">';
                                         echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gpic']).'" alt="Guitar Image">';
                                         echo '<b><h4>'.$row['gname'].'</h4></b>';
@@ -136,6 +143,13 @@
                                     while($row = $result->fetch_array())
                                     {
                                         echo '<a href = "itemsinfo.php?gid='.$row['gnumber'].'">';
+
+                                        $_SESSION['gnumber'] = $row['gnumber'];
+                                        $_SESSION['gpic'] = $row['gpic'];
+                                        $_SESSION['gname'] = $row['gname'];
+                                        $_SESSION['gprice'] = $row['gprice'];
+                                        $_SESSION['gbrand'] = $row['gbrand'];    
+                                        
                                         echo '<div class="card">';
                                         echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gpic']).'" alt="Guitar Image">';
                                         echo '<b><h4>'.$row['gname'].'</h4></b>';
@@ -156,6 +170,13 @@
                                     while($row = $result->fetch_array())
                                     {
                                         echo '<a href = "itemsinfo.php?gid='.$row['gnumber'].'">';
+
+                                        $_SESSION['gnumber'] = $row['gnumber'];
+                                        $_SESSION['gpic'] = $row['gpic'];
+                                        $_SESSION['gname'] = $row['gname'];
+                                        $_SESSION['gprice'] = $row['gprice'];
+                                        $_SESSION['gbrand'] = $row['gbrand'];
+
                                         echo '<div class="card">';
                                         echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gpic']).'" alt="Guitar Image">';
                                         echo '<b><h4>'.$row['gname'].'</h4></b>';
