@@ -23,21 +23,23 @@
             </div>
         </section>
         <section class="middle">
-            <div class="left">
-                <?php
-                    session_start();
-                    $gname = $_SESSION['gname'];
-                    require('connect.php');
-                    echo "Guitar name: ".$gname;
-                ?>
-            </div>
-            <div class="right">
-                <?php
-                    session_start();
-                    $gnumber = $_SESSION['gnumber'];
-                    require('connect.php');
-                    echo "Guitar ID: " . $gnumber;
-                ?>
+            <div class="itemsinfo">
+                <div class="left">
+                    <?php
+                        session_start();
+                        $gname = $_SESSION['gname'];
+                        require('connect.php');
+                        echo "Guitar name: ".$gname;
+                    ?>
+                </div>
+                <div class="right">
+                    <?php
+                        session_start();
+                        $gnumber = $_SESSION['gnumber'];
+                        require('connect.php');
+                        echo "Guitar ID: " . $gnumber;
+                    ?>
+                </div>
             </div>
         </section>       
     </body>

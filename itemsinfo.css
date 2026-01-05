@@ -47,16 +47,28 @@ html,body
 .middle
 {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.itemsinfo
+{
+    display: flex;
     flex-direction: row;
-    margin: 1%;
+    box-sizing: border-box;
+    width: 1000px;
+    height: 800px;
+    padding: 1%;
 }
 
 .left
 {
     background-color: red;
+    width: 100%;
 }
 
 .right
 {
     background-color: blue;
+    width: 100%;
 }
