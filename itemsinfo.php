@@ -37,7 +37,7 @@ error_reporting(E_ALL);
                         {
                             while($row = $result->fetch_array())
                             {
-                                echo "<img src='data:image/jpeg;base64," .base64_encode($row['gpic']). "' alt='Guitar Image' style='max-width:100%'>";
+                                echo "<img src='data:image/jpeg;base64," .base64_encode($row['gpic']). "' alt='Guitar Image' style='width: 80%; height: auto;'>";
                             }
                         }
                         else
