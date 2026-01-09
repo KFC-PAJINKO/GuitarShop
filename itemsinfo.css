@@ -63,12 +63,38 @@ html,body
 
 .left
 {
-    background-color: red;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
     width: 100%;
+    align-items: center;
+}
+
+.left img
+{
+    margin-top: 20%;
+    width: 400px;
+    height: 500px;
 }
 
 .right
 {
-    background-color: blue;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
     width: 100%;
 }
+
+.itemtext
+{
+    display: flex;
+    flex-direction: column;
+    margin-top: 90px;
+    margin-right: 50px;
+}
+
+.itemtext p
+{
+    font-size: 20px;
+}
+

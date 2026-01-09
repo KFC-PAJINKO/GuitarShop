@@ -1,3 +1,9 @@
+<?php
+session_start();
+require('connect.php');
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -25,19 +31,42 @@
         <section class="middle">
             <div class="itemsinfo">
                 <div class="left">
-                    <?php
-                        session_start();
-                        $gname = $_SESSION['gname'];
-                        require('connect.php');
-                        echo "Guitar name: ".$gname;
+                    <?php                        
+                        $q = "select * from guitaritems where gnumber = '".$_GET['gid']."';";
+                        if($result = $mysql->query($q))
+                        {
+                            while($row = $result->fetch_array())
+                            {
+                                echo "<img src='data:image/jpeg;base64," .base64_encode($row['gpic']). "' alt='Guitar Image' style='max-width:100%'>";
+                            }
+                        }
+                        else
+                        {
+                            echo "Error in query execution: ".$mysql->error;
+                        }                                                                    
                     ?>
                 </div>
                 <div class="right">
-                    <?php
-                        session_start();
-                        $gnumber = $_SESSION['gnumber'];
-                        require('connect.php');
-                        echo "Guitar ID: " . $gnumber;
+                    <?php                        
+                        $q = "select * from guitaritems where gnumber = '".$_GET['gid']."';";
+                        if($result = $mysql->query($q))
+                        {
+                            while($row = $result->fetch_array())
+                            {
+                                echo "<div class='itemtext'>";
+                                echo "<h2 style='font-size: 37px; margin-bottom: 35px'>".$row['gname']."</h2>";
+                                echo "<hr style='width: 100%; margin-bottom: 25px;'>";
+                                echo "<p>Electric Guitar: ".$row['gname']."</p><br>";
+                                echo "<p>Guitar Model ID: ".$row['gnumber']."</p><br>";
+                                echo "<p>Brand: ".$row['gbrand']."</p><br>";
+                                echo "<p>Price: ".$row['gprice']." Bath</p><br>";
+                                echo "</div>";
+                            }
+                        }
+                        else
+                        {
+                            echo "Error in query execution: ".$mysql->error;
+                        }  
                     ?>
                 </div>
             </div>
