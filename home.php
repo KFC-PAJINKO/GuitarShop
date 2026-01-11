@@ -63,7 +63,7 @@
                         <form action="home.php" method="get">
                             <div class ="pricefilter">
                                 <p>From: <span id="minprice"></span> To: <span id="maxprice"></span></p>
-                                <p>MiniminPriceRange</p>
+                                <p>MinimumPriceRange</p>
                                 <input type="range" name = minpricerange min="0" max="30000" value="<?php echo $minprice?>" class="slider" id="minpricerange" onchange="this.form.submit()">
                                 <p>MaximumPriceRange</p>
                                 <input type="range" name = maxpricerange min="0" max="30000" value="<?php echo $maxprice?>" class="slider" id="maxpricerange" onchange="this.form.submit()">        
