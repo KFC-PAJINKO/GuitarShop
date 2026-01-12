@@ -7,6 +7,18 @@
         <link rel="stylesheet" href="home.css">
     </head>
     <body>
+        <script>
+        document.addEventListener("DOMContentLoaded", function(event) 
+        { 
+            var scrollpos = localStorage.getItem('scrollpos');
+            if (scrollpos) window.scrollTo(0, scrollpos);
+        });
+
+        window.onbeforeunload = function(e) 
+        {
+            localStorage.setItem('scrollpos', window.scrollY);
+        };
+        </script>
         <section class="top">
             <div class="topup">
                 <p>How to order</p>
@@ -100,18 +112,18 @@
                                     <input type="submit" name="descendingbut" value="descending">
                                 </div>  
                                 <div class="BrandSelection">
-                                    <p>Brand Selection: </p>
-                                    <input type = "checkbox" id = "Fender" name = "brandfender" value="Fender">
+                                    <p>Brand Selection:</p>
+                                    <input type = "checkbox" id = "Fender" name = "brands[]" value="Fender" onchange="this.form.submit()">
                                     <label for = "Fender"> Fender<br></label>
-                                    <input type = "checkbox" id = "Squier" name = "brandsquier" value="Squier">
+                                    <input type = "checkbox" id = "Squier" name = "brands[]" value="Squier" onchange="this.form.submit()">
                                     <label for = "Squier"> Squier<br></label>
-                                    <input type = "checkbox" id = "Gibson" name = "brandgibson" value="Gibson">
+                                    <input type = "checkbox" id = "Gibson" name = "brands[]" value="Gibson" onchange="this.form.submit()">
                                     <label for = "Gibson"> Gibson<br></label>
-                                    <input type = "checkbox" id = "Epiphone" name = "brandepiphone" value="Epiphone">
+                                    <input type = "checkbox" id = "Epiphone" name = "brands[]" value="Epiphone" onchange="this.form.submit()">
                                     <label for = "Epiphone"> Epiphone<br></label>
-                                    <input type = "checkbox" id = "Ibanez" name = "brandibanez" value="Ibanez">
+                                    <input type = "checkbox" id = "Ibanez" name = "brands[]" value="Ibanez" onchange="this.form.submit()">
                                     <label for = "Ibanez"> Ibanez<br></label>
-                                    <input type = "checkbox" id = "PRS" name = "brandprs" value="PRS">
+                                    <input type = "checkbox" id = "PRS" name = "brands[]" value="PRS" onchange="this.form.submit()">
                                     <label for = "PRS"> PRS<br></label>                                    
                                 </div>                             
                             </div>
@@ -124,19 +136,19 @@
                             $q = "select * from guitaritems where gprice >= $minprice and gprice <= $maxprice";
                             if(isset($_GET['ascendingbut']))
                             {
+                                
                                 $q .= " order by gprice asc";
-                                if($result = $mysql->query($q))
+                                if (isset($_GET['brands']) && !empty($_GET['brands']))
                                 {
+                                    $q = "select * from guitaritems where gprice >= $minprice and gprice <= $maxprice order by gprice asc";
+                                    $all_brands = $_GET['brands']; 
+                                    $brand_string = implode(',', $all_brands);
+                                    $q .= " and gbrand IN ('$brand_string')";
+                                    if($result = $mysql->query($q))
+                                    {
                                     while($row = $result->fetch_array())
                                     {                        
                                         echo '<a href = "itemsinfo.php?gid='.$row['gnumber'].'">';
-
-                                        $_SESSION['gnumber'] = $row['gnumber'];
-                                        $_SESSION['gpic'] = $row['gpic'];
-                                        $_SESSION['gname'] = $row['gname'];
-                                        $_SESSION['gprice'] = $row['gprice'];
-                                        $_SESSION['gbrand'] = $row['gbrand'];
-
                                         echo '<div class="card">';
                                         echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gpic']).'" alt="Guitar Image">';
                                         echo '<b><h4>'.$row['gname'].'</h4></b>';
@@ -144,72 +156,131 @@
                                         echo '</div>';
                                         echo '</a>';
                                     }
+                                    }
+                                    else
+                                    {
+                                        echo "Error in query execution: ".$mysql->error;
+                                    }      
                                 }
                                 else
                                 {
-                                    echo "Error in query execution: ".$mysql->error;
-                                }                                
+                                    if($result = $mysql->query($q))
+                                    {
+                                    while($row = $result->fetch_array())
+                                    {                        
+                                        echo '<a href = "itemsinfo.php?gid='.$row['gnumber'].'">';
+                                        echo '<div class="card">';
+                                        echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gpic']).'" alt="Guitar Image">';
+                                        echo '<b><h4>'.$row['gname'].'</h4></b>';
+                                        echo '<p>'.$row['gprice'].' bath </p>';
+                                        echo '</div>';
+                                        echo '</a>';
+                                    }
+                                    }
+                                    else
+                                    {
+                                        echo "Error in query execution: ".$mysql->error;
+                                    }        
+                                }                                                        
                             }
                             else if(isset($_GET['descendingbut']))
                             {
                                 $q .= " order by gprice desc";
-                                if($result = $mysql->query($q))
+                                if (isset($_GET['brands']) && !empty($_GET['brands']))
                                 {
-                                    while($row = $result->fetch_array())
+                                    $q = "select * from guitaritems where gprice >= $minprice and gprice <= $maxprice order by gprice desc";
+                                    $all_brands = $_GET['brands']; 
+                                    $brand_string = implode(',', $all_brands);
+                                    $q .= " and gbrand IN ('$brand_string')";
+                                    if($result = $mysql->query($q))
                                     {
+                                    while($row = $result->fetch_array())
+                                    {                        
                                         echo '<a href = "itemsinfo.php?gid='.$row['gnumber'].'">';
-
-                                        $_SESSION['gnumber'] = $row['gnumber'];
-                                        $_SESSION['gpic'] = $row['gpic'];
-                                        $_SESSION['gname'] = $row['gname'];
-                                        $_SESSION['gprice'] = $row['gprice'];
-                                        $_SESSION['gbrand'] = $row['gbrand'];    
-                                        
                                         echo '<div class="card">';
                                         echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gpic']).'" alt="Guitar Image">';
                                         echo '<b><h4>'.$row['gname'].'</h4></b>';
-                                        echo '<p">'.$row['gprice'].' bath </p>';
+                                        echo '<p>'.$row['gprice'].' bath </p>';
                                         echo '</div>';
                                         echo '</a>';
                                     }
+                                    }
+                                    else
+                                    {
+                                        echo "Error in query execution: ".$mysql->error;
+                                    }      
                                 }
                                 else
                                 {
-                                    echo "Error in query execution: ".$mysql->error;
-                                }         
+                                    if($result = $mysql->query($q))
+                                    {
+                                    while($row = $result->fetch_array())
+                                    {                        
+                                        echo '<a href = "itemsinfo.php?gid='.$row['gnumber'].'">';
+                                        echo '<div class="card">';
+                                        echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gpic']).'" alt="Guitar Image">';
+                                        echo '<b><h4>'.$row['gname'].'</h4></b>';
+                                        echo '<p>'.$row['gprice'].' bath </p>';
+                                        echo '</div>';
+                                        echo '</a>';
+                                    }
+                                    }
+                                    else
+                                    {
+                                        echo "Error in query execution: ".$mysql->error;
+                                    }        
+                                }                                
                             }
                             else
-                            {                                                      
-                                if($result = $mysql->query($q))
+                            {                           
+                                if (isset($_GET['brands']) && !empty($_GET['brands']))
                                 {
-                                    while($row = $result->fetch_array())
+                                    $all_brands = $_GET['brands']; 
+                                    $brand_string = implode(',', $all_brands);
+                                    $q .= " and gbrand IN ('$brand_string')";
+                                    if($result = $mysql->query($q))
                                     {
-                                        echo '<a href = "itemsinfo.php?gid='.$row['gnumber'].'">';
-
-                                        $_SESSION['gnumber'] = $row['gnumber'];
-                                        $_SESSION['gpic'] = $row['gpic'];
-                                        $_SESSION['gname'] = $row['gname'];
-                                        $_SESSION['gprice'] = $row['gprice'];
-                                        $_SESSION['gbrand'] = $row['gbrand'];
-
-                                        echo '<div class="card">';
-                                        echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gpic']).'" alt="Guitar Image">';
-                                        echo '<b><h4>'.$row['gname'].'</h4></b>';
-                                        echo '<p">'.$row['gprice'].' bath </p>';
-                                        echo '</div>';
-                                        echo '</a>';
+                                        while($row = $result->fetch_array())
+                                        {
+                                            echo '<a href = "itemsinfo.php?gid='.$row['gnumber'].'">';
+                                            echo '<div class="card">';
+                                            echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gpic']).'" alt="Guitar Image">';
+                                            echo '<b><h4>'.$row['gname'].'</h4></b>';
+                                            echo '<p">'.$row['gprice'].' bath </p>';
+                                            echo '</div>';
+                                            echo '</a>';
+                                        }
+                                    }
+                                    else
+                                    {
+                                        echo "Error in query execution: ".$mysql->error; 
                                     }
                                 }
                                 else
                                 {
-                                    echo "Error in query execution: ".$mysql->error;
-                                }
-
-                            }                    
+                                    if($result = $mysql->query($q))
+                                    {
+                                        while($row = $result->fetch_array())
+                                        {
+                                            echo '<a href = "itemsinfo.php?gid='.$row['gnumber'].'">';
+                                            echo '<div class="card">';
+                                            echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gpic']).'" alt="Guitar Image">';
+                                            echo '<b><h4>'.$row['gname'].'</h4></b>';
+                                            echo '<p">'.$row['gprice'].' bath </p>';
+                                            echo '</div>';
+                                            echo '</a>';
+                                        }
+                                    }
+                                    else
+                                    {
+                                        echo "Error in query execution: ".$mysql->error;
+                                    }
+                                }                                                     
+                            }                          
                         ?>
-                    </div>                
+                    </div>                                
                 </div>
             </div>
-        </section>
+        </section>        
     </body>
 </html>
