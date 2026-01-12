@@ -63,9 +63,9 @@
                         <form action="home.php" method="get">
                             <div class ="pricefilter">
                                 <p>From: <span id="minprice"></span> To: <span id="maxprice"></span></p>
-                                <p>MinimumPriceRange</p>
+                                <p>Minimum Price Range</p>
                                 <input type="range" name = minpricerange min="0" max="30000" value="<?php echo $minprice?>" class="slider" id="minpricerange" onchange="this.form.submit()">
-                                <p>MaximumPriceRange</p>
+                                <p>Maximum Price Range</p>
                                 <input type="range" name = maxpricerange min="0" max="30000" value="<?php echo $maxprice?>" class="slider" id="maxpricerange" onchange="this.form.submit()">        
                                 <script>
                                     var minslider = document.getElementById("minpricerange");
@@ -98,7 +98,22 @@
                                 <div class="sortprice">                                    
                                     <input type="submit" name="ascendingbut" value="ascending" style="margin-right: 10px;">
                                     <input type="submit" name="descendingbut" value="descending">
-                                </div>                               
+                                </div>  
+                                <div class="BrandSelection">
+                                    <p>Brand Selection: </p>
+                                    <input type = "checkbox" id = "Fender" name = "brandfender" value="Fender">
+                                    <label for = "Fender"> Fender<br></label>
+                                    <input type = "checkbox" id = "Squier" name = "brandsquier" value="Squier">
+                                    <label for = "Squier"> Squier<br></label>
+                                    <input type = "checkbox" id = "Gibson" name = "brandgibson" value="Gibson">
+                                    <label for = "Gibson"> Gibson<br></label>
+                                    <input type = "checkbox" id = "Epiphone" name = "brandepiphone" value="Epiphone">
+                                    <label for = "Epiphone"> Epiphone<br></label>
+                                    <input type = "checkbox" id = "Ibanez" name = "brandibanez" value="Ibanez">
+                                    <label for = "Ibanez"> Ibanez<br></label>
+                                    <input type = "checkbox" id = "PRS" name = "brandprs" value="PRS">
+                                    <label for = "PRS"> PRS<br></label>                                    
+                                </div>                             
                             </div>
                         </form>
                     </div>                    
@@ -189,7 +204,8 @@
                                 {
                                     echo "Error in query execution: ".$mysql->error;
                                 }
-                            }
+
+                            }                    
                         ?>
                     </div>                
                 </div>
