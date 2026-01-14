@@ -136,104 +136,49 @@
                             $q = "select * from guitaritems where gprice >= $minprice and gprice <= $maxprice";
                             if(isset($_GET['ascendingbut']))
                             {
-                                
                                 $q .= " order by gprice asc";
-                                if (isset($_GET['brands']) && !empty($_GET['brands']))
+                                if($result = $mysql->query($q))
                                 {
-                                    $q = "select * from guitaritems where gprice >= $minprice and gprice <= $maxprice order by gprice asc";
-                                    $all_brands = $_GET['brands']; 
-                                    $brand_string = implode(',', $all_brands);
-                                    $q .= " and gbrand IN ('$brand_string')";
-                                    if($result = $mysql->query($q))
-                                    {
-                                    while($row = $result->fetch_array())
-                                    {                        
-                                        echo '<a href = "itemsinfo.php?gid='.$row['gnumber'].'">';
-                                        echo '<div class="card">';
-                                        echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gpic']).'" alt="Guitar Image">';
-                                        echo '<b><h4>'.$row['gname'].'</h4></b>';
-                                        echo '<p>'.$row['gprice'].' bath </p>';
-                                        echo '</div>';
-                                        echo '</a>';
-                                    }
-                                    }
-                                    else
-                                    {
-                                        echo "Error in query execution: ".$mysql->error;
-                                    }      
+                                while($row = $result->fetch_array())
+                                {                        
+                                    echo '<a href = "itemsinfo.php?gid='.$row['gnumber'].'">';
+                                    echo '<div class="card">';
+                                    echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gpic']).'" alt="Guitar Image">';
+                                    echo '<b><h4>'.$row['gname'].'</h4></b>';
+                                    echo '<p>'.$row['gprice'].' bath </p>';
+                                    echo '</div>';
+                                    echo '</a>';
+                                }
                                 }
                                 else
                                 {
-                                    if($result = $mysql->query($q))
-                                    {
-                                    while($row = $result->fetch_array())
-                                    {                        
-                                        echo '<a href = "itemsinfo.php?gid='.$row['gnumber'].'">';
-                                        echo '<div class="card">';
-                                        echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gpic']).'" alt="Guitar Image">';
-                                        echo '<b><h4>'.$row['gname'].'</h4></b>';
-                                        echo '<p>'.$row['gprice'].' bath </p>';
-                                        echo '</div>';
-                                        echo '</a>';
-                                    }
-                                    }
-                                    else
-                                    {
-                                        echo "Error in query execution: ".$mysql->error;
-                                    }        
-                                }                                                        
+                                    echo "Error in query execution: ".$mysql->error;
+                                }      
                             }
                             else if(isset($_GET['descendingbut']))
                             {
-                                $q .= " order by gprice desc";
-                                if (isset($_GET['brands']) && !empty($_GET['brands']))
+                                $q .= " order by gprice desc";                               
+                                if($result = $mysql->query($r))
                                 {
-                                    $q = "select * from guitaritems where gprice >= $minprice and gprice <= $maxprice order by gprice desc";
-                                    $all_brands = $_GET['brands']; 
-                                    $brand_string = implode(',', $all_brands);
-                                    $q .= " and gbrand IN ('$brand_string')";
-                                    if($result = $mysql->query($q))
-                                    {
-                                    while($row = $result->fetch_array())
-                                    {                        
-                                        echo '<a href = "itemsinfo.php?gid='.$row['gnumber'].'">';
-                                        echo '<div class="card">';
-                                        echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gpic']).'" alt="Guitar Image">';
-                                        echo '<b><h4>'.$row['gname'].'</h4></b>';
-                                        echo '<p>'.$row['gprice'].' bath </p>';
-                                        echo '</div>';
-                                        echo '</a>';
-                                    }
-                                    }
-                                    else
-                                    {
-                                        echo "Error in query execution: ".$mysql->error;
-                                    }      
+                                while($row = $result->fetch_array())
+                                {                        
+                                    echo '<a href = "itemsinfo.php?gid='.$row['gnumber'].'">';
+                                    echo '<div class="card">';
+                                    echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gpic']).'" alt="Guitar Image">';
+                                    echo '<b><h4>'.$row['gname'].'</h4></b>';
+                                    echo '<p>'.$row['gprice'].' bath </p>';
+                                    echo '</div>';
+                                    echo '</a>';
+                                }
                                 }
                                 else
                                 {
-                                    if($result = $mysql->query($q))
-                                    {
-                                    while($row = $result->fetch_array())
-                                    {                        
-                                        echo '<a href = "itemsinfo.php?gid='.$row['gnumber'].'">';
-                                        echo '<div class="card">';
-                                        echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gpic']).'" alt="Guitar Image">';
-                                        echo '<b><h4>'.$row['gname'].'</h4></b>';
-                                        echo '<p>'.$row['gprice'].' bath </p>';
-                                        echo '</div>';
-                                        echo '</a>';
-                                    }
-                                    }
-                                    else
-                                    {
-                                        echo "Error in query execution: ".$mysql->error;
-                                    }        
-                                }                                
-                            }
+                                    echo "Error in query execution: ".$mysql->error;
+                                }
+                            }                                     
                             else
                             {                           
-                                if (isset($_GET['brands']) && !empty($_GET['brands']))
+                               /* if (isset($_GET['brands']) && !empty($_GET['brands']))
                                 {
                                     $all_brands = $_GET['brands']; 
                                     $brand_string = implode(',', $all_brands);
@@ -257,7 +202,7 @@
                                     }
                                 }
                                 else
-                                {
+                                {*/
                                     if($result = $mysql->query($q))
                                     {
                                         while($row = $result->fetch_array())
@@ -276,7 +221,7 @@
                                         echo "Error in query execution: ".$mysql->error;
                                     }
                                 }                                                     
-                            }                          
+                           /* } */                      
                         ?>
                     </div>                                
                 </div>
