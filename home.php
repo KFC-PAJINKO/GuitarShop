@@ -158,7 +158,7 @@
                             else if(isset($_GET['descendingbut']))
                             {
                                 $q .= " order by gprice desc";                               
-                                if($result = $mysql->query($r))
+                                if($result = $mysql->query($q))
                                 {
                                 while($row = $result->fetch_array())
                                 {                        
@@ -211,7 +211,7 @@
                                             echo '<div class="card">';
                                             echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gpic']).'" alt="Guitar Image">';
                                             echo '<b><h4>'.$row['gname'].'</h4></b>';
-                                            echo '<p">'.$row['gprice'].' bath </p>';
+                                            echo '<p">฿ '.$row['gprice'].'</p>';
                                             echo '</div>';
                                             echo '</a>';
                                         }
@@ -220,8 +220,8 @@
                                     {
                                         echo "Error in query execution: ".$mysql->error;
                                     }
-                                }                                                     
-                           /* } */                      
+                            // }
+                            }                      
                         ?>
                     </div>                                
                 </div>
