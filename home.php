@@ -110,7 +110,19 @@
                                 <div class="sortprice">                                    
                                     <input type="submit" name="ascendingbut" value="ascending" style="margin-right: 10px;">
                                     <input type="submit" name="descendingbut" value="descending">
-                                </div>  
+                                </div>
+                                <script>
+                                    const checkboxes = document.getElementById('BrandSelection');
+                                    checkboxes.addEventListener('change', function() 
+                                    {
+                                        const clickcheck = event.target;
+                                        if (clickcheck.type === 'checkbox') 
+                                            {
+                                            const clickedElement.getAttribute('value');
+
+                                            }
+                                    });
+                                </script>  
                                 <div class="BrandSelection">
                                     <p>Brand Selection:</p>
                                     <input type = "checkbox" id = "Fender" name = "brands[]" value="Fender" onchange="this.form.submit()">
@@ -139,37 +151,84 @@
                                 $q .= " order by gprice asc";
                                 if($result = $mysql->query($q))
                                 {
-                                while($row = $result->fetch_array())
-                                {                        
-                                    echo '<a href = "itemsinfo.php?gid='.$row['gnumber'].'">';
-                                    echo '<div class="card">';
-                                    echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gpic']).'" alt="Guitar Image">';
-                                    echo '<b><h4>'.$row['gname'].'</h4></b>';
-                                    echo '<p>'.$row['gprice'].' bath </p>';
-                                    echo '</div>';
-                                    echo '</a>';
-                                }
+                                    while($row = $result->fetch_array())
+                                    {                        
+                                        echo '<a href = "itemsinfo.php?gid='.$row['gnumber'].'">';
+                                        echo '<div class="card">';
+                                        echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gpic']).'" alt="Guitar Image">';
+                                        echo '<b><h4>'.$row['gname'].'</h4></b>';
+                                        echo '<p>'.$row['gprice'].' bath </p>';
+                                        echo '</div>';
+                                        echo '</a>';
+                                    }
+                                    if (isset($_GET['brands']) && !empty($_GET['brands']))
+                                    {
+                                        $all_brands = $_GET['brands']; 
+                                        $brand_string = implode(',', $all_brands);
+                                        $q = "select * from guitaritems where gprice >= $minprice and gprice <= $maxprice and gbrand IN ('$brand_string') order by gprice asc";
+                                        if($result = $mysql->query($q))
+                                        {
+                                            while($row = $result->fetch_array())
+                                            {
+                                                echo '<a href = "itemsinfo.php?gid='.$row['gnumber'].'">';
+                                                echo '<div class="card">';
+                                                echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gpic']).'" alt="Guitar Image">';
+                                                echo '<b><h4>'.$row['gname'].'</h4></b>';
+                                                echo '<p">'.$row['gprice'].' bath </p>';
+                                                echo '</div>';
+                                                echo '</a>';
+                                            }
+                                        }
+                                        else
+                                        {
+                                            echo "Error in query execution: ".$mysql->error; 
+                                        }
+                                    }
                                 }
                                 else
                                 {
                                     echo "Error in query execution: ".$mysql->error;
-                                }      
+                                }  
+                                    
                             }
                             else if(isset($_GET['descendingbut']))
                             {
                                 $q .= " order by gprice desc";                               
                                 if($result = $mysql->query($q))
                                 {
-                                while($row = $result->fetch_array())
-                                {                        
-                                    echo '<a href = "itemsinfo.php?gid='.$row['gnumber'].'">';
-                                    echo '<div class="card">';
-                                    echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gpic']).'" alt="Guitar Image">';
-                                    echo '<b><h4>'.$row['gname'].'</h4></b>';
-                                    echo '<p>'.$row['gprice'].' bath </p>';
-                                    echo '</div>';
-                                    echo '</a>';
-                                }
+                                    while($row = $result->fetch_array())
+                                    {                        
+                                        echo '<a href = "itemsinfo.php?gid='.$row['gnumber'].'">';
+                                        echo '<div class="card">';
+                                        echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gpic']).'" alt="Guitar Image">';
+                                        echo '<b><h4>'.$row['gname'].'</h4></b>';
+                                        echo '<p>'.$row['gprice'].' bath </p>';
+                                        echo '</div>';
+                                        echo '</a>';
+                                    }
+                                    if (isset($_GET['brands']) && !empty($_GET['brands']))
+                                    {
+                                        $all_brands = $_GET['brands']; 
+                                        $brand_string = implode(',', $all_brands);
+                                        $q = "select * from guitaritems where gprice >= $minprice and gprice <= $maxprice and gbrand IN ('$brand_string') order by gprice desc";
+                                        if($result = $mysql->query($q))
+                                        {
+                                            while($row = $result->fetch_array())
+                                            {
+                                                echo '<a href = "itemsinfo.php?gid='.$row['gnumber'].'">';
+                                                echo '<div class="card">';
+                                                echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gpic']).'" alt="Guitar Image">';
+                                                echo '<b><h4>'.$row['gname'].'</h4></b>';
+                                                echo '<p">'.$row['gprice'].' bath </p>';
+                                                echo '</div>';
+                                                echo '</a>';
+                                            }
+                                        }
+                                        else
+                                        {
+                                            echo "Error in query execution: ".$mysql->error; 
+                                        }
+                                    }
                                 }
                                 else
                                 {
@@ -178,7 +237,7 @@
                             }                                     
                             else
                             {                           
-                               /* if (isset($_GET['brands']) && !empty($_GET['brands']))
+                                if (isset($_GET['brands']) && !empty($_GET['brands']))
                                 {
                                     $all_brands = $_GET['brands']; 
                                     $brand_string = implode(',', $all_brands);
@@ -202,7 +261,7 @@
                                     }
                                 }
                                 else
-                                {*/
+                                {
                                     if($result = $mysql->query($q))
                                     {
                                         while($row = $result->fetch_array())
@@ -220,7 +279,7 @@
                                     {
                                         echo "Error in query execution: ".$mysql->error;
                                     }
-                            // }
+                                }
                             }                      
                         ?>
                     </div>                                
