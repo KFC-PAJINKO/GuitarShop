@@ -150,8 +150,8 @@
                             {
                                  if (isset($_GET['brands']) && !empty($_GET['brands']))
                                 {
-                                    $all_brands = $_GET['brands']; 
-                                    $brand_string = implode(',', $all_brands);
+                                    $all_brands = $_GET['brands'];
+                                    $brand_string = implode("','", $all_brands);
                                     $q .= "and gbrand in ('$brand_string')";
                                 }
                                 $q .= " order by gprice asc";
@@ -179,7 +179,7 @@
                                  if (isset($_GET['brands']) && !empty($_GET['brands']))
                                 {
                                     $all_brands = $_GET['brands']; 
-                                    $brand_string = implode(',', $all_brands);
+                                   $brand_string = implode("','", $all_brands);
                                     $q .= "and gbrand in ('$brand_string')";
                                 }
                                 $q .= " order by gprice desc";                               
@@ -206,7 +206,7 @@
                                 if (isset($_GET['brands']) && !empty($_GET['brands']))
                                 {
                                     $all_brands = $_GET['brands']; 
-                                    $brand_string = implode(',', $all_brands);
+                                    $brand_string = implode("','", $all_brands);
                                     $q .= "and gbrand in ('$brand_string');";
                                     if($result = $mysql->query($q))
                                     {
