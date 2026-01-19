@@ -125,17 +125,17 @@
                                 </script>  
                                 <div class="BrandSelection">
                                     <p>Brand Selection:</p>
-                                    <input type = "checkbox" id = "Fender" name = "brands[]" value="Fender" onchange="this.form.submit()">
+                                    <input type = "checkbox" id = "Fender" name = "brands[]" value="Fender" onchange="this.form.submit()" <?php if(isset($_GET['brands']) && in_array('Fender', $_GET['brands'])) echo 'checked'; ?>>
                                     <label for = "Fender"> Fender<br></label>
-                                    <input type = "checkbox" id = "Squier" name = "brands[]" value="Squier" onchange="this.form.submit()">
+                                    <input type = "checkbox" id = "Squier" name = "brands[]" value="Squier" onchange="this.form.submit()" <?php if(isset($_GET['brands']) && in_array('Squier', $_GET['brands'])) echo 'checked'; ?>>
                                     <label for = "Squier"> Squier<br></label>
-                                    <input type = "checkbox" id = "Gibson" name = "brands[]" value="Gibson" onchange="this.form.submit()">
+                                    <input type = "checkbox" id = "Gibson" name = "brands[]" value="Gibson" onchange="this.form.submit()" <?php if(isset($_GET['brands']) && in_array('Gibson', $_GET['brands'])) echo 'checked'; ?>>
                                     <label for = "Gibson"> Gibson<br></label>
-                                    <input type = "checkbox" id = "Epiphone" name = "brands[]" value="Epiphone" onchange="this.form.submit()">
+                                    <input type = "checkbox" id = "Epiphone" name = "brands[]" value="Epiphone" onchange="this.form.submit()" <?php if(isset($_GET['brands']) && in_array('Epiphone', $_GET['brands'])) echo 'checked'; ?>>
                                     <label for = "Epiphone"> Epiphone<br></label>
-                                    <input type = "checkbox" id = "Ibanez" name = "brands[]" value="Ibanez" onchange="this.form.submit()">
+                                    <input type = "checkbox" id = "Ibanez" name = "brands[]" value="Ibanez" onchange="this.form.submit()" <?php if(isset($_GET['brands']) && in_array('Ibanez', $_GET['brands'])) echo 'checked'; ?>>
                                     <label for = "Ibanez"> Ibanez<br></label>
-                                    <input type = "checkbox" id = "PRS" name = "brands[]" value="PRS" onchange="this.form.submit()">
+                                    <input type = "checkbox" id = "PRS" name = "brands[]" value="PRS" onchange="this.form.submit()" <?php if(isset($_GET['brands']) && in_array('PRS', $_GET['brands'])) echo 'checked'; ?>>
                                     <label for = "PRS"> PRS<br></label>                                    
                                 </div>                             
                             </div>
@@ -145,12 +145,18 @@
                         <?php
                             session_start();
                             require('connect.php');                                                                    
-                            $q = "select * from guitaritems where gprice >= $minprice and gprice <= $maxprice";
+                            $q = "select * from guitaritems where gprice >= $minprice and gprice <= $maxprice ";
                             if(isset($_GET['ascendingbut']))
                             {
+                                 if (isset($_GET['brands']) && !empty($_GET['brands']))
+                                {
+                                    $all_brands = $_GET['brands']; 
+                                    $brand_string = implode(',', $all_brands);
+                                    $q .= "and gbrand in ('$brand_string')";
+                                }
                                 $q .= " order by gprice asc";
                                 if($result = $mysql->query($q))
-                                {
+                                {                                    
                                     while($row = $result->fetch_array())
                                     {                        
                                         echo '<a href = "itemsinfo.php?gid='.$row['gnumber'].'">';
@@ -160,30 +166,7 @@
                                         echo '<p>'.$row['gprice'].' bath </p>';
                                         echo '</div>';
                                         echo '</a>';
-                                    }
-                                    if (isset($_GET['brands']) && !empty($_GET['brands']))
-                                    {
-                                        $all_brands = $_GET['brands']; 
-                                        $brand_string = implode(',', $all_brands);
-                                        $q = "select * from guitaritems where gprice >= $minprice and gprice <= $maxprice and gbrand IN ('$brand_string') order by gprice asc";
-                                        if($result = $mysql->query($q))
-                                        {
-                                            while($row = $result->fetch_array())
-                                            {
-                                                echo '<a href = "itemsinfo.php?gid='.$row['gnumber'].'">';
-                                                echo '<div class="card">';
-                                                echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gpic']).'" alt="Guitar Image">';
-                                                echo '<b><h4>'.$row['gname'].'</h4></b>';
-                                                echo '<p">'.$row['gprice'].' bath </p>';
-                                                echo '</div>';
-                                                echo '</a>';
-                                            }
-                                        }
-                                        else
-                                        {
-                                            echo "Error in query execution: ".$mysql->error; 
-                                        }
-                                    }
+                                    }                            
                                 }
                                 else
                                 {
@@ -193,6 +176,12 @@
                             }
                             else if(isset($_GET['descendingbut']))
                             {
+                                 if (isset($_GET['brands']) && !empty($_GET['brands']))
+                                {
+                                    $all_brands = $_GET['brands']; 
+                                    $brand_string = implode(',', $all_brands);
+                                    $q .= "and gbrand in ('$brand_string')";
+                                }
                                 $q .= " order by gprice desc";                               
                                 if($result = $mysql->query($q))
                                 {
@@ -205,30 +194,7 @@
                                         echo '<p>'.$row['gprice'].' bath </p>';
                                         echo '</div>';
                                         echo '</a>';
-                                    }
-                                    if (isset($_GET['brands']) && !empty($_GET['brands']))
-                                    {
-                                        $all_brands = $_GET['brands']; 
-                                        $brand_string = implode(',', $all_brands);
-                                        $q = "select * from guitaritems where gprice >= $minprice and gprice <= $maxprice and gbrand IN ('$brand_string') order by gprice desc";
-                                        if($result = $mysql->query($q))
-                                        {
-                                            while($row = $result->fetch_array())
-                                            {
-                                                echo '<a href = "itemsinfo.php?gid='.$row['gnumber'].'">';
-                                                echo '<div class="card">';
-                                                echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gpic']).'" alt="Guitar Image">';
-                                                echo '<b><h4>'.$row['gname'].'</h4></b>';
-                                                echo '<p">'.$row['gprice'].' bath </p>';
-                                                echo '</div>';
-                                                echo '</a>';
-                                            }
-                                        }
-                                        else
-                                        {
-                                            echo "Error in query execution: ".$mysql->error; 
-                                        }
-                                    }
+                                    }                                   
                                 }
                                 else
                                 {
@@ -241,7 +207,7 @@
                                 {
                                     $all_brands = $_GET['brands']; 
                                     $brand_string = implode(',', $all_brands);
-                                    $q .= " and gbrand IN ('$brand_string')";
+                                    $q .= "and gbrand in ('$brand_string');";
                                     if($result = $mysql->query($q))
                                     {
                                         while($row = $result->fetch_array())
