@@ -6,7 +6,7 @@ html,body
     padding: 0;
     height: 100vh;
     width: 100%;
-    background-color: whitesmoke;
+    background-color: white;
 }
 
 .top
@@ -55,10 +55,12 @@ html,body
 {
     display: flex;
     flex-direction: row;
+    align-items: flex-start;
     box-sizing: border-box;
     width: 1000px;
     height: 800px;
     padding: 1%;
+    margin-top: 0;
 }
 
 .left
@@ -72,7 +74,7 @@ html,body
 
 .left img
 {
-    margin-top: 20%;
+    margin-top: 35px;
     width: 400px;
     height: 500px;
 }
@@ -83,18 +85,26 @@ html,body
     flex-direction: column;
     background-color: white;
     width: 100%;
+    margin-top: 0;
+
 }
 
 .itemtext
 {
     display: flex;
     flex-direction: column;
-    margin-top: 90px;
+    margin-top: 50px;
     margin-right: 50px;
 }
 
 .itemtext p
 {
-    font-size: 20px;
+    margin-left: 3px;
 }
 
+.cartbutton
+{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}

@@ -54,12 +54,10 @@ error_reporting(E_ALL);
                             while($row = $result->fetch_array())
                             {
                                 echo "<div class='itemtext'>";
-                                echo "<h2 style='font-size: 37px; margin-bottom: 35px'>".$row['gname']."</h2>";
+                                echo "<h2 style = 'font-size: 50px; margin-bottom: 0; margin-top: 0; font-family: Sans-serif;'>".$row['gname']." ".$row['gbrand']."</h2>";                                
+                                echo "<p style = 'font-size: 13px; margin-top: 5px; font-family: Sans-serif; color: grey;'>Guitar Model ID: ".$row['gnumber']."</p>";
                                 echo "<hr style='width: 100%; margin-bottom: 25px;'>";
-                                echo "<p>Electric Guitar: ".$row['gname']."</p><br>";
-                                echo "<p>Guitar Model ID: ".$row['gnumber']."</p><br>";
-                                echo "<p>Brand: ".$row['gbrand']."</p><br>";
-                                echo "<p>Price: ".$row['gprice']." Bath</p><br>";
+                                echo "<p style = 'font-family: Sans-serif; font-size: 50px; margin-top: 0; margin-bottom: 0;'>฿ ".$row['gprice']." </p><br>";                            
                                 echo "</div>";
                             }
                         }
@@ -68,6 +66,13 @@ error_reporting(E_ALL);
                             echo "Error in query execution: ".$mysql->error;
                         }  
                     ?>
+                    <form action="itemsinfo.php" method="get">
+                        <div class="cartbutton">                                                
+                            <button type="submit" style="width: 150px; height: 40px; background-color: black; color: white; font-size: 13px; margin-right: 20px; border-radius: 10px;">Add to Cart</button>
+                            <button type="submit" style="width: 150px; height: 40px; background-color: black; color: white; font-size: 13px; border-radius: 10px;">Add to Favorite</button>
+                        </div>                        
+                        <hr style='width: 100%; margin-bottom: 25px; margin-top: 35px;'>
+                    </form>
                 </div>
             </div>
         </section>       
