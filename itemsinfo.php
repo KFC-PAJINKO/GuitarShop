@@ -57,8 +57,7 @@ error_reporting(E_ALL);
                                 echo "<h2 style = 'font-size: 50px; margin-bottom: 0; margin-top: 0; font-family: Sans-serif;'>".$row['gname']." ".$row['gbrand']."</h2>";                                
                                 echo "<p style = 'font-size: 13px; margin-top: 5px; font-family: Sans-serif; color: grey;'>Guitar Model ID: ".$row['gnumber']."</p>";
                                 echo "<hr style='width: 100%; margin-bottom: 25px;'>";
-                                echo "<p style = 'font-family: Sans-serif; font-size: 50px; margin-top: 0; margin-bottom: 0;'>฿ ".$row['gprice']." </p><br>";
-                                echo "<p style = 'font-family: Sans-serif; font-size: 20px; margin-top: 0; margin-bottom: 0;'> Description </p>";                            
+                                echo "<p style = 'font-family: Sans-serif; font-size: 50px; margin-top: 0; margin-bottom: 0;'>฿ ".$row['gprice']." </p><br>";                           
                                 echo "</div>";
                             }
                         }
@@ -74,6 +73,11 @@ error_reporting(E_ALL);
                         </div>                        
                         <hr style='width: 100%; margin-bottom: 25px; margin-top: 35px;'>
                     </form>
+                    <div class="discription">
+                        <?php
+                            echo "<p style = 'font-family: Sans-serif; font-size: 20px; margin-top: 0; margin-bottom: 0;'> Description </p>"; 
+                        ?>
+                    </div>
                 </div>
             </div>
         </section>       
