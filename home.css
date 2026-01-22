@@ -60,7 +60,6 @@ html,body
     width: 100%;
     max-width:1147px;
     height: auto;
-    /*max-height:400px;*/
 }
 
 .info
@@ -137,7 +136,7 @@ html,body
     margin-bottom: 3%;
 }
 
-a 
+a.guitarlink
 {
     display: block;
     text-decoration: none;
@@ -147,11 +146,11 @@ a
     max-height: fit-content;
 }
 
-a:hover
+a.guitarlink:hover
 {
     animation: mymove 1s infinite, mymovebackg 1s infinite;
     z-index: 10;
-    
+    position: relative;
 }
 
 @keyframes mymove 
@@ -199,6 +198,11 @@ a:hover
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
+}
+
+.contactus
+{
+
 }
 
 @media only screen and (max-width: 1000px) {

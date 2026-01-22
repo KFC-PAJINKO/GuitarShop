@@ -23,7 +23,9 @@
             <div class="topup">
                 <p>How to order</p>
                 <p>News and Offer</p>
-                <p>Contact us</p>
+                <a href = contactus.html  id="contactus">
+                    <p>Contact us</p>
+                </a>
                 <p>|</p>
                 <img src="account.png" alt="Account Icon" style="width:20px;height:20px;margin-top: 10px;">
                 <p style="margin-left: 5px;">Register</p>
@@ -159,7 +161,7 @@
                                 {                                    
                                     while($row = $result->fetch_array())
                                     {                        
-                                        echo '<a href = "itemsinfo.php?gid='.$row['gnumber'].'">';
+                                        echo '<a href = "itemsinfo.php?gid='.$row['gnumber'].'" class="guitarlink">';
                                         echo '<div class="card">';
                                         echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gpic']).'" alt="Guitar Image">';
                                         echo '<b><h4>'.$row['gname'].'</h4></b>';
@@ -187,7 +189,7 @@
                                 {
                                     while($row = $result->fetch_array())
                                     {                        
-                                        echo '<a href = "itemsinfo.php?gid='.$row['gnumber'].'">';
+                                         echo '<a href = "itemsinfo.php?gid='.$row['gnumber'].'" class="guitarlink">';
                                         echo '<div class="card">';
                                         echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gpic']).'" alt="Guitar Image">';
                                         echo '<b><h4>'.$row['gname'].'</h4></b>';
@@ -212,7 +214,7 @@
                                     {
                                         while($row = $result->fetch_array())
                                         {
-                                            echo '<a href = "itemsinfo.php?gid='.$row['gnumber'].'">';
+                                             echo '<a href = "itemsinfo.php?gid='.$row['gnumber'].'" class="guitarlink">';
                                             echo '<div class="card">';
                                             echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gpic']).'" alt="Guitar Image">';
                                             echo '<b><h4>'.$row['gname'].'</h4></b>';
@@ -232,7 +234,7 @@
                                     {
                                         while($row = $result->fetch_array())
                                         {
-                                            echo '<a href = "itemsinfo.php?gid='.$row['gnumber'].'">';
+                                             echo '<a href = "itemsinfo.php?gid='.$row['gnumber'].'" class="guitarlink">';
                                             echo '<div class="card">';
                                             echo '<img src="data:image/jpeg;base64,'.base64_encode($row['gpic']).'" alt="Guitar Image">';
                                             echo '<b><h4>'.$row['gname'].'</h4></b>';
