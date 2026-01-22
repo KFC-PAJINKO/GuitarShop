@@ -75,7 +75,19 @@ error_reporting(E_ALL);
                     </form>
                     <div class="discription">
                         <?php
-                            echo "<p style = 'font-family: Sans-serif; font-size: 20px; margin-top: 0; margin-bottom: 0;'> Description </p>"; 
+                            echo "<p style = 'font-family: Sans-serif; font-size: 20px; margin-top: 0; margin-bottom: 0;'> Description </p>";
+                            $q = "select gdes from guitardes where gnumber = '".$_GET['gid']."';";
+                            if($result = $mysql->query($q))
+                            {
+                                while($row = $result->fetch_array())
+                                {                                
+                                    echo "<p style = 'font-size: 13px; margin-top: 15px; font-family: Sans-serif; color: grey;'>".$row['gdes']."</p>";
+                                }
+                            }
+                            else
+                            {
+                                echo "Error in query execution: ".$mysql->error;
+                            }                              
                         ?>
                     </div>
                 </div>
