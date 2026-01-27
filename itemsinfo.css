@@ -115,3 +115,27 @@ html,body
     flex-direction: column;
     margin-top: 10px;
 }
+
+a.contactus
+{
+    text-decoration: none;
+    color: inherit;
+}
+
+a.contactus:hover
+{
+    text-decoration: none;
+    color: grey;
+}
+
+a.gohome
+{
+    text-decoration: none;
+    color: inherit;
+}
+
+a.gohome:hover
+{
+    text-decoration: none;
+    color: inherit;
+}

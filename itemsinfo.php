@@ -17,13 +17,17 @@ error_reporting(E_ALL);
             <div class="topup">
                 <p>How to order</p>
                 <p>News and Offer</p>
-                <p>Contact us</p>
+                <a href="contactus.html" class="contactus">
+                    <p>Contact us</p>
+                </a>
                 <p>|</p>
                 <img src="account.png" alt="Account Icon" style="width:20px;height:20px;margin-top: 10px;">
                 <p style="margin-left: 5px;">Register</p>
             </div>
             <div class="topdown">
-                <h1 style="margin-top: 25px; white-space: nowrap;">Windows Music</h1>
+                <a href = home.php class="gohome">
+                    <h1 style="margin-top: 25px; white-space: nowrap;">Windows Music</h1>
+                </a>
                 <input type="text" placeholder="Search for products..." style="width: 60%;height: 40%;margin-top: 25px;margin-right: 30px; margin-left: 3%;">
                 <img src="cart.png" alt="Cart Icon" style="width: 20px;height: 20px;margin-top: 35px;margin-right: 15%;">
             </div>

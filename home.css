@@ -153,6 +153,18 @@ a.guitarlink:hover
     position: relative;
 }
 
+a.contactus
+{
+    text-decoration: none;
+    color: inherit;
+}
+
+a.contactus:hover
+{
+    text-decoration: none;
+    color: grey;
+}
+
 @keyframes mymove 
 {
     0% {color:red;}

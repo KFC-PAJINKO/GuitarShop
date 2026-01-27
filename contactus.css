@@ -52,3 +52,15 @@ html,body
     width: 100%;
     margin-top: 20px;
 }
+
+a.gohome
+{
+    text-decoration: none;
+    color: inherit;
+}
+
+a.gohome:hover
+{
+    text-decoration: none;
+    color: inherit;
+}
