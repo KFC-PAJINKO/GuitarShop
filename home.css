@@ -149,7 +149,7 @@ a.guitarlink
 a.guitarlink:hover
 {
     animation: mymove 1s infinite, mymovebackg 1s infinite;
-    z-index: 10;
+    z-index: 100;
     position: relative;
 }
 
@@ -178,7 +178,6 @@ a.guitarlink:hover
     border-style: solid;
     border-width: 0.5px;
     border-color: rgb(235, 235, 235);    
-    
 }
 
 .card p
@@ -200,15 +199,17 @@ a.guitarlink:hover
     margin-bottom: 20px;
 }
 
-.contactus
-{
-
-}
-
 @media only screen and (max-width: 1000px) {
     .top
     {
         width: 100%;
+    }
+    
+    .topup
+    {
+        white-space: nowrap;
+        margin-left: 10%;
+        margin-right: 5%;
     }
 
     .info
@@ -226,15 +227,15 @@ a.guitarlink:hover
     .itemslist
     {
         flex-direction: column;
-        width: 750px;
+        width: 100%;
+        max-width: 750px;
         align-items: center;
     }
 
     .card
     {
-        max-width: 475px;
-        padding-left: 2%;
-        padding-right: 2%;
+        width: fit-content;
+        box-sizing: border-box;
     }
 
     .card p
@@ -245,8 +246,8 @@ a.guitarlink:hover
     .card img
     {
         padding-top: 35px;
-        width:260px;
-        height:350px;
+        width:290px;
+        height:380px;
     }
 
     .filter
@@ -263,10 +264,9 @@ a.guitarlink:hover
         margin-bottom: 4%;
     }
 
-    a 
+    a.guitarlink
     {
-        display: block;
-        width: 100%;
-        max-width: 350px;
+        max-width: none;
+        width: fit-content;
     }
 }

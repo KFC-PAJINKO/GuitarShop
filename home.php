@@ -23,7 +23,7 @@
             <div class="topup">
                 <p>How to order</p>
                 <p>News and Offer</p>
-                <a href = contactus.html  id="contactus">
+                <a href = contactus.html  class="contactus">
                     <p>Contact us</p>
                 </a>
                 <p>|</p>
