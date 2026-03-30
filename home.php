@@ -32,7 +32,10 @@
             </div>
             <div class="topdown">
                 <h1 style="margin-top: 25px; white-space: nowrap;">Windows Music</h1>
-                <input type="text" placeholder="Search for products..." style="width: 60%;height: 40%;margin-top: 25px;margin-right: 30px; margin-left: 3%;">
+                <form action="home.php" method="get">
+                    <input type="text" placeholder="Search for products..." style="width: 60%;height: 40%;margin-top: 25px;margin-right: 30px; margin-left: 3%;">
+                </form>
+                
                 <img src="cart.png" alt="Cart Icon" style="width: 20px;height: 20px;margin-top: 35px;margin-right: 15%;">
             </div>
         </section>

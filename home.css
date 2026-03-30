@@ -30,6 +30,11 @@ html,body
     
 }
 
+form 
+{
+  display: contents;
+}
+
 .topup p
 {
     margin-right: 15px;
