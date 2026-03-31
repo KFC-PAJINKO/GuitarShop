@@ -33,8 +33,36 @@
             <div class="topdown">
                 <h1 style="margin-top: 25px; white-space: nowrap;">Windows Music</h1>
                 <form action="home.php" method="get">
-                    <input type="text" placeholder="Search for products..." style="width: 60%;height: 40%;margin-top: 25px;margin-right: 30px; margin-left: 3%;">
+                    <input type="text" placeholder="Search for products..." name="searchbar" style="width: 60%;height: 40%;margin-top: 25px;margin-right: 30px; margin-left: 3%;">
                 </form>
+                <?php
+                    session_start();
+                    require('connect.php');
+                    if (isset($_GET['searchbar']) && !empty($_GET['searchbar']))
+                        {
+                            $search = $_GET['searchbar'];
+                            $q = "select * from guitaritems where gname like '%$search%'";
+                            if($result = $mysql->query($q))
+                            {
+                                if ($result->num_rows > 0)
+                                {
+                                    while($row = $result->fetch_array())
+                                    {
+                                        header("Location: itemsinfo.php?gid=".$row['gnumber']);
+                                        exit();
+                                    }
+                                }
+                                else
+                                {
+                                    echo "<script>alert('No items found');</script>";
+                                }
+                            }
+                            else
+                            {
+                                echo "Error in query execution: ".$mysql->error;
+                            }   
+                        }
+                ?>
                 
                 <img src="cart.png" alt="Cart Icon" style="width: 20px;height: 20px;margin-top: 35px;margin-right: 15%;">
             </div>
@@ -153,7 +181,7 @@
                             $q = "select * from guitaritems where gprice >= $minprice and gprice <= $maxprice ";
                             if(isset($_GET['ascendingbut']))
                             {
-                                 if (isset($_GET['brands']) && !empty($_GET['brands']))
+                                if (isset($_GET['brands']) && !empty($_GET['brands']))
                                 {
                                     $all_brands = $_GET['brands'];
                                     $brand_string = implode("','", $all_brands);
@@ -181,7 +209,7 @@
                             }
                             else if(isset($_GET['descendingbut']))
                             {
-                                 if (isset($_GET['brands']) && !empty($_GET['brands']))
+                                if (isset($_GET['brands']) && !empty($_GET['brands']))
                                 {
                                     $all_brands = $_GET['brands']; 
                                    $brand_string = implode("','", $all_brands);
